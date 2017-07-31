@@ -1,0 +1,102 @@
+<!DOCTYPE html  >
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <title>Welcome to html</title>
+      <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css" />
+      <style>
+         .div1{
+         display:inline-block;
+         color:red;
+         border:1px solid red;
+         width:200px;
+         }
+         .div2{
+         display:inline-block;
+         color:blue;
+         border:1px solid blue;
+         width:200px;
+         }
+         .span1{
+         color:green;
+         border:1px solid green;
+         width:800px;
+         }
+         .span2{
+         color:black;
+         border:1px solid black;
+         }
+      </style>
+	  <html>
+	  </html>
+   </head>
+   <body onload=pageLoaded() >
+      <div class="container" >
+         <div class="panel-group">
+            <div class="panel panel-default">
+               <div class="panel-body">
+                  <div class="row" >
+                     <div class="col-md-2" >
+                        <label >User ID</label>
+                     </div>
+                     <div class="col-md-3" >
+                        <input type="text" value="" placeholder="User ID" class="form-control"  id="txt_user_name"  />
+                     </div>
+                  </div>
+                  <div class="row" >
+                     <div class="col-md-2" >
+                        <label >Password</label>
+                     </div>
+                     <div class="col-md-3" >
+                        <input type="text" value="" placeholder="Password" class="form-control" id="txt_user_pwd"  />
+                     </div>
+                  </div>                  
+				  <div class="row" >
+                     <div class="col-md-3" >
+                        <input type="button" value="Save"  class="btn btn-primary"  />
+                     </div>
+                  </div>				  
+				  <div class="row" >
+                     <div class="col-md-3" >
+						<label>
+							  Remember me
+							 <input type="checkbox"  id="chk_remember"  >
+						</label>
+                       
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+	  <script>
+		 function pageLoaded(){
+              document.getElementById("txt_user_name").value=  localStorage.getItem("user_name");
+              document.getElementById("txt_user_pwd").value=  localStorage.getItem("user_pwd");
+              var chk_remember = document.getElementById("chk_remember");
+
+              if(localStorage.getItem("user_pwd") != undefined && localStorage.getItem("user_pwd") != ""){
+                        chk_remember.checked=true;
+              }
+  
+		    
+            chk_remember.addEventListener("click",function(){
+
+                if(this.checked){
+                    var txt_user_name = document.getElementById("txt_user_name").value;
+                    var txt_user_pwd = document.getElementById("txt_user_pwd").value;
+                 
+                
+                    localStorage.setItem("user_name",txt_user_name);
+                    localStorage.setItem("user_pwd",txt_user_pwd);
+                }else{
+                       localStorage.setItem("user_name","");
+                       localStorage.setItem("user_pwd","");
+                }
+                
+                 
+            })
+		 }
+	  </script>
+   </body>
+</html>
